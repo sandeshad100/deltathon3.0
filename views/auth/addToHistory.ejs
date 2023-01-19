@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add History</title>
+     <!-- fontawesome  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="/style/login.css">
+     <link rel="stylesheet" href="/style/register/register.css">
+     <link rel="stylesheet" href="/style/global.css">
+     <style>
+            textarea{
+        width: 100%;
+   color: var(--textColor);
+    }
+     </style>
+</head>
+<body>
+    <div class="login-wrap">
+        <h1 class="section-title">
+            Add to <span class="color-main ">History</span>
+        </h1>
+        <div class="form-card">
+            <form action="/addToHistory" method="post" >
+                <div class="form-row">
+                    <div class="form-field-wrap"><input type="text" required name="name" placeholder="Person Name or bloodBank name" class=""></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap"><input type="date" required name="date" placeholder="Date" class=""></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap"><input type="text" required name="amount" placeholder="Amount" class=""></div>
+                </div>
+                <div class="form-row">
+                <textarea name="caseDetail" id="" placeholder="case"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <button type="submit" class="btn-primary">Add to History</button>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <p class="color-gray">Not Now? <span><a href="/profile" class="color-light">Go Back</a></span></p>
+                   </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

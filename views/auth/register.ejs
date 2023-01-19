@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    
+    <link rel="stylesheet" href="style/header.css">
+
+    <link rel="stylesheet" href="style/global.css">
+
+    <link rel="stylesheet" href="style/register/register.css">
+    <style>
+      
+    </style>
+</head>
+
+
+<body>
+  
+    <div class="form-card">
+        <h2 class="form-title text-center">Create <span class="color-main">WeCare </span>account</h2>
+        <p class="text-center">Save life of others by your blood.</p>
+        <div class="form-wrap">
+            <div class="form-left">
+                <img src="formImage.jpg" alt="" srcset="">
+            </div>
+            
+                <form class="form-right" action="/register" method="post" >
+                    <div class="form-row">
+                        <div class="form-field-wrap">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Full name" name="fullName" required>
+                        </div>
+    
+                        <div class="form-field-wrap">
+                            <label for="bloodGroup">Select Blood Group</label>
+    
+                            <select name="bloodGroup" id="bloodGroup" required>
+                                <option value=""></option>
+                                <option value="a+">A+</option>
+                                <option value="ab+">AB+</option>
+                                <option value="o+">O+</option>
+                                <option value="a-">A-</option>
+                                <option value="b+">B+</option>
+                                <option value="ab-">AB-</option>
+                                <option value="b-">B-</option>
+                                <option value="o-">O-</option>
+                                
+                            
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-field-wrap">
+                            <label for="province">Select Province</label>
+                            <select name="province" id="province" required onchange="updateDistricts()">
+                                <option value=""></option>
+                                <% provinces.forEach((province)=> { %>
+                                    <option value="<%=province.name%>"><%=province.name%></option>
+                                    <% }) %>
+                            </select>
+                        </div>
+                        <div class="form-field-wrap">
+                            <label for="district">Select District</label>
+    
+                            <select name="district" id="district" required  onchange="updateLocalLevel()">
+                                <option value=""></option>
+                             
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-field-wrap">
+                            <label for="localLevel" required>Local Level</label>
+                            <select name="localLevel" id="localLevel">
+                                <option value=""></option>
+                                
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-field-wrap" >
+                            <label for="email">Email</label>
+                            <input type="text" placeholder="Email" name="email" id="email" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-field-wrap">
+                            <label for="dbo">Date of Birth</label>
+                            <input type="date" name="dateOfBirth" id="dbo" required>
+                        </div>
+                        <div class="form-field-wrap">
+                            <label for="phone">Phone</label>
+                            <input type="text"  placeholder="Phone" name="phone" id="phone" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-field-wrap">
+                            <label for="password">Password</label>
+                            <input type="password" placeholder="Password" name="password" id="password" required>
+                        </div>
+                        <div class="form-field-wrap">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input  required type="text" name="passwordConfirm" placeholder="Confirm Password" id="confirmPassword">
+                        </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-field-wrap">
+                            <label for="confirmPassword">Parent Number</label>
+                            <input  required type="text" name="parentNumber" placeholder="parentNumber" id="confirmPassword">
+                        </div>
+                        <div class="form-field-wrap">
+                            <label for="gender">Gender</label>
+                            <select name="gender" id="gender" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female </option>
+                                <option value="not to say">Not to say</option>
+    
+                            </select>
+                        </div>
+    
+                    </div>
+    
+    
+                    <div class="form-row-agree">
+                        <input type="checkbox" name="agree" id="agree" required>
+                        <p for="agree">I agree to all the <span><a href="#" class="color-light">Terms and conditions</a></span></p>
+                    </div>
+                    <div class="form-row">
+                        <button type="submit" class="btn-submit">Create Account</button>
+                    </div>
+                    <div class="form-row">
+                     <p>I'm already a member. <span><a href="#" class="color-light">Log In</a></span></p>
+                    </div>
+    
+    
+    
+    
+                </div>
+            </div>
+         
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    function updateDistricts() {
+      let name = $('#province').val();
+      if(name){
+        $.get('/districtsByName', {name: name}, (data) => {
+          let options = '';
+          data.forEach((district) => {
+            options += `<option value="${district.name}">${district.name}</option>`;
+          });
+          $('#district').html(options);
+        });
+      }else{
+        $('#district').html('');
+      }
+    }
+    function updateLocalLevel() {
+    let name = $('#district').val();
+    if(name){
+      $.get('/localLevelByName', {name: name}, (data) => {
+        let options = '';
+        options += `<option value=""></option>`;
+        data.forEach((localLevel) => {
+
+          options += `<option value="${localLevel.name}">${localLevel.name}</option>`;
+        });
+        $('#localLevel').html(options);
+      });
+    }else{
+      $('#localLevel').html('');
+    }
+  }
+  </script>
+
+</html>

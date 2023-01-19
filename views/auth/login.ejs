@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+     <!-- fontawesome  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="style/login.css">
+     <link rel="stylesheet" href="style/register/register.css">
+     <link rel="stylesheet" href="style/global.css">
+</head>
+<body>
+   <% if(!currentUser){ %>
+
+    <div class="login-wrap">
+        
+        <h1 class="section-title">
+            Login to <span class="color-main ">WeCare</span>
+        </h1>
+        <div class="form-card">
+            <form action="/login" method="post">
+                <div class="form-row">
+                    <div class="form-field-wrap"><input type="text" name="email" placeholder="email address" class=""></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap"><input type="text"name="password" placeholder="Password" class=""></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <button type="submit" class="btn-primary">Login</button>
+                    </div>
+                </div>
+                <div class="form-row" style="display: flex; align-items: center;justify-content: center;">
+                    <span><a href="/forgotPassword" class="color-light">Forgot Password</a></span>
+                   </div>
+                   <div class="form-row" style="display: flex; align-items: center;justify-content: center;">
+                    <span><a href="/bloodBank/hospitalLogin" class="color-light">Login as hospital</a></span>
+                   </div>
+                <div class="form-row">
+                    <p class="color-gray">Not register yet? <span><a href="register" class="color-light">Create an account</a></span></p>
+                   </div>
+            </form>
+        </div>
+    </div>
+ <%} else { %>
+    <% layout('./select/selectPage.ejs') %>
+<%}%>
+</body>
+</html>

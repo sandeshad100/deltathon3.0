@@ -1,0 +1,43 @@
+<div class="css-container">
+    <header class="container-flow">
+        <div class="logo-wrap">
+            <img src="/assets/images/logo_png.png" alt="logo" srcset="">
+        </div>
+        <nav class="navLinks">
+            <div class="btn-close-wrap">
+                <img src="/assets/responsive/close.svg" class="css-btn-close">
+            </div>
+            <span class="links"><a href="/blood">Home</a></span>
+            <span class="links"><a href="/events">Events</a></span>
+            <span class="links"><a href="/bloodBank">Blood Banks</a></span>
+            <span class="links"><a href="/bloodRequest">Blood Requests</a></span>
+            <span class="links"><a href="/donor">Find Blood</a></span>
+  
+
+            <% if(!currentUser && !hospitalId) {%>
+            <span><a href="login"><button
+                        class="nav-btn btn-login btn-radius hover-transition">Login</button></a></span>
+            <span><a href="register"><button
+                        class="nav-btn btn-register btn-radius hover-transition">Register</button></a></span>
+                        <% } else if(hospitalId) {%>
+                            <span class="links"><a href="/bloodBank/dashboard/<%=hospitalId%>">Dashboard</a></span>
+                        
+                <span><a href="/logOut"><button
+                    class="nav-btn btn-login btn-radius hover-transition">Logout</button></a></span>
+                    <% } else {%>
+                        <span class="links"><a href="/profile">Dashboard</a></span>
+
+                        <span><a href="/logOut"><button
+                            class="nav-btn btn-login btn-radius hover-transition">Logout</button></a></span>
+
+                            <% } %>
+        
+
+
+        </nav>
+        <div class="ham-wrap">
+            <img src="/assets/responsive/icon-hamburger.svg" class="btn-ham">
+        </div>
+    </header>
+
+</div>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Care Master</title>
+    <!-- fontawesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bs css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style/global.css">
+    <style>
+        body{
+            height: 100%;
+        }
+        .css-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            /* background-color: #E5E4E2; */
+            border-radius: 10px;
+        }
+        .css-container{
+            margin-top: 150px;
+            max-height: 100vh;
+        }
+        .datashow-card {
+            height: 110px;
+      border-radius: 10px;
+            background-color: white;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+            cursor: pointer;
+        }
+        .datashow-card:hover{
+            /* background-color: var(--mainColor); */
+            /* color: white !important; */
+        }
+        .datashow-card p {
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container p-3 css-container">
+        <p class="h2 color-main fw-bold text-center">WeCare</p>
+        <p class="h3 color-light text-center">Select the service you need:</p>
+        <!-- <div class="blood-add-button-wrap d-flex justify-content-start gap-4 mt-4">
+            <span><a href="#" class="btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Add Blood Bank</a></span>
+            <span><a href="#" class="btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Add Event</a></span>
+        </div> -->
+        <div class="datashow-wrap">
+            <div class="css-display p-4 mt-4 mb-4">
+                <span>
+                    <a href="/blood">
+                        <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+                            <p class="h5 fw-bold color-main text-center">Blood Bank</p>
+                            <p class="color-light  text-center" style="padding-top: 10px;">You can give and receive blood.</p>
+                        </div>
+                    </a>
+                </span>
+                <span>
+                    <a href="/consultDoctor">
+                        <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+                            <p class="h5 fw-bold color-main text-center">Consult With Doctor</p>
+                            <p class="color-light  text-center" style="padding-top: 10px;">Connect with real doctors online</p>
+                        </div>
+                    </a>
+                </span>
+                <span>
+                    <a href="">
+                        <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+                            <p class="h5 fw-bold color-main text-center">Need Emergency Help!</p>
+                            <p class="color-light  text-center" style="padding-top: 10px;">LOYALTY POINTS</p>
+                        </div>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- bs cdn  -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<!-- jquery cdn  -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</html>

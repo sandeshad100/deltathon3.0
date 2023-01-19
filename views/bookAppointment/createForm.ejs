@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add History</title>
+     <!-- fontawesome  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="/style/login.css">
+     <link rel="stylesheet" href="/style/register/register.css">
+     <link rel="stylesheet" href="/style/global.css">
+     <style>
+        /* body{
+            background-image: radial-gradient(#E03455 0.5px, #fefefe 0.5px) !important;
+            background-color: red
+
+        } */
+            textarea{
+        width: 100%;
+   color: var(--textColor);
+    }
+    .form-field-wrap input {
+    padding: 9px 10px !important;
+    width: 100% !important;
+    background-color:
+    #ECECEC;
+}
+.form-field-wrap select {
+    padding: 9px 10px !important;
+    width: 100% !important;
+    background-color:
+    #ECECEC;
+}
+     </style>
+</head>
+<body style="background-color: red !important;">
+    <div class="login-wrap">
+        <h1 class="section-title">
+            Add  <span class="color-main ">Book Appointment</span>
+        </h1>
+        <div class="form-card" style="padding: 2px 24px;padding-top: 14px;" >
+            <form action="/bookAppointment" method="post" >
+                <div class="form-row">
+                    <div class="form-field-wrap"><input type="text" required name="name" placeholder="Donor Name" class=""></div>
+                </div>
+            
+                <div class="form-row">
+                    <div class="form-field-wrap"><input type="email" required name="email" placeholder="email" class=""></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap"><input type="text" required name="address" placeholder="Address" class=""></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap"><input type="text" required name="phone" placeholder="Phone" class=""></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <label for="bloodGroup">Select Blood Group</label>
+                        
+                        <select name="bloodGroup" id="bloodGroup" required>
+                            <option value=""></option>
+                            <option value="a+">A+</option>
+                            <option value="ab+">AB+</option>
+                            <option value="o+">O+</option>
+                            <option value="a-">A-</option>
+                            <option value="b+">B+</option>
+                            <option value="ab-">AB-</option>
+                            <option value="b-">B-</option>
+                            <option value="o-">O-</option>
+                            
+                        
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    
+                    <div class="form-field-wrap">
+                        <label for="district">Blood Bank</label>
+    
+                            <select name="bloodBank" id="district" required>
+                                <option value=""></option>
+                                <% bloodBanks.forEach((bloodBank)=>{ %>
+
+                                    <option value=<%= bloodBank.hospitalId %>><%= bloodBank.name %>-<%= bloodBank.district %>,<%= bloodBank.localLevel %></option>
+                              <%  }) %>
+                                
+                            </select>
+                    </div>
+                   
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <button type="submit" class="btn-primary">Book Appointment</button>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <p class="color-gray">Not Now? <span><a href="/profile" class="color-light">Go Back</a></span></p>
+                   </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

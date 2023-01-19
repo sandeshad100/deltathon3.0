@@ -1,0 +1,82 @@
+.hero{
+    display: flex;
+    /* padding: 70px 0 0 0; */
+    height: fit-content;
+    padding: 92px 150px 0 !important;
+    justify-content: space-between;
+ 
+
+}
+
+
+.hero-left{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.hero-call-to-action-wrap{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    margin-bottom: 25px;
+
+}
+.text-donate-now{
+    width: 100%;
+
+}
+.hero-title{
+    font-weight: bold;
+    font-size: 50px;
+    /* padding-right: 100px; */
+    margin-bottom: 25px;
+}
+
+.hero-subtitle{
+    margin-bottom: 25px;
+}
+.hero-left{
+    text-align: center;
+}
+.hero-right{
+    padding: 50px 0 0 0;
+    display: flex;
+    flex-direction: column;
+
+}
+.hero-image{
+    width: 90%;
+}
+
+/* responsive  */
+@media only screen and (max-width :1200px) {
+    .hero{
+        flex-direction: column;
+        padding: 92px 15px 0 !important;
+    }
+    .hero-left{
+        width: 100%;
+    }
+    .hero-call-to-action-wrap{
+        flex-direction: column;
+    }
+    .hero-title{
+        text-align: center;
+        font-size: 30px;
+    }
+    .hero-right{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero .btn-primary{
+width: 160px;
+padding: 9px;
+    }
+
+}

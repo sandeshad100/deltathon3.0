@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Request List</title>
+        <!-- fontawesome  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- bs css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <link rel="stylesheet" href="/style/global.css">
+            <link rel="stylesheet" href="/style/header.css">
+            <style>
+                .bloodRequest-card-footer{
+                    background-color: #aaa;
+                }
+            </style>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="container" style="padding-top: 80px;">
+ <div class="blood-add-button-wrap w-100 d-flex justify-content-end position-fixed top-0 end-0 mt-4 mx-5" style="padding-top: 80px;">
+    <span><a href="/bloodRequest/new" class="btn-primary rounded"><i class="fa-solid fa-plus"></i> Add</a></span>
+</div>
+<% bloodRequests.forEach(bloodRequest => { %>
+        <div class="bloodRequest-card-wrap mt-3 shadow p-4">
+            <div class="bloodRequest-card-heading d-flex gap-3 fw-bold">
+                <p class="blood-type color-light">Required Blood:<%= bloodRequest.bloodGroup %></p>
+                <p class="blood-location"><%= bloodRequest.province %>,<%= bloodRequest.district %>,<%= bloodRequest.localLevel %></p>
+            </div>
+            <div class="bloodRequest-card-body">
+                <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Patient:</th>
+                        <td><%= bloodRequest.patientName %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Required:</th>
+                        <td><%= bloodRequest.requiredPint %> on <%= bloodRequest.requiredDate %> at <%= bloodRequest.requiredTime %> on <%= bloodRequest.hospital %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Case:</th>
+                        <td><%= bloodRequest.caseDetail %>/td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Contact:</th>
+                        <td><%= bloodRequest.contactPerson %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Phone:</th>
+                        <td><%= bloodRequest.phone %></td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+            </div>
+            <div class="bloodRequest-card-footer d-flex gap-5 rounded p-2">
+                    <span class="color-light"><a href="#"><i class="fa-solid fa-phone"></i> Call</a></span>
+                    <span class="color-light"><a href="#"><i class="fa-solid fa-share-nodes"></i> Share</a></span>
+            </div>
+        </div>
+<% }) %>
+   
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Event</title>
+     <!-- fontawesome  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bs css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+
+    
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--mainColor);
+    padding-top:10px !important;
+    padding-bottom: 10px !important;
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+}
+.links{
+    transition: 0.5s ease-in-out;
+}
+header a {
+    transition: 0.5s ease-in;
+    color: var(--white);
+}
+.logo-wrap{
+    width: 52px;
+    overflow: hidden;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.nav-btn{
+    padding: 10px 45px;
+    border-radius: 10px;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    width: 148px;
+}
+
+.btn-login{
+    background-color: transparent;
+    border: 2px solid var(--white);
+}
+
+.btn-register{
+    background-color: var(--white);
+    color: var(--mainColorLight);
+    
+}
+
+.btn-login:hover{
+    background-color: var(--white);
+    color: var(--mainColorLight);
+}
+
+.btn-register:hover{
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+header .links a:hover{
+
+ border-bottom: 1px solid var(--white);
+}
+
+.ham-wrap{
+    display: none;
+    visibility: hidden;
+}
+.btn-close-wrap{
+    display: none;
+    visibility: hidden;
+}
+/* responsive  */
+@media only screen and (max-width :1200px) {
+
+    
+   .ham-wrap{
+    display: block;
+    visibility: visible;
+   }
+   header {
+    position: relative;
+   }
+
+   nav{
+   width: 30%;
+    padding: 19px 4.5%;
+    transition: 0.2s ease-in;
+
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    background-color: var(--mainColor);
+    top: 0;
+    right: -100%;
+    gap: 15px;
+    min-height: 100vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   }
+
+   .btn-close-wrap {
+    /* padding: 10px 35px 0 0; */
+    margin-bottom: 35px;
+    width: 100%;
+    visibility: visible;
+   
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-end;
+
+
+
+
+}
+
+.css-btn-close {
+
+    width: 26px;
+}
+.show {
+    right: 0px;
+
+}
+
+}
+
+@media only screen and (max-width :600px) {
+
+    nav{
+        width: 50%;
+    }
+
+}
+
+
+    @import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700;800&amp;family=Roboto&amp;display=swap&#39;);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
+    
+}
+
+div,header,nav {
+    /* border: 1px solid blueviolet; */
+}
+
+:root {
+    --mainColor: #E03455;
+    --mainColorLight: #DE546F;
+    --textColor: #404040;
+    --white:white;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+
+input,
+select {
+    color: var(--textColor);
+}
+img{
+    width: 100%;
+}
+button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+/* global classes start */
+.border{
+    border: 1px solid green ;
+}
+.hover-transition{
+    transition: 0.2s ease-in;
+}
+/* layout */
+.container-flow{
+    padding: 0 90px 0;
+}
+.section{
+    margin: 0 0 60px 0;
+}
+
+
+
+/* text  */
+.text-center {
+    text-align: center;
+}
+
+.section-title{
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.font-w-600{
+    font-weight: 600;
+    }
+
+/* buttons  */
+.btn-radius{
+    border-radius: 6px;
+}
+
+.btn-primary{
+    width: 200px;
+background-color: var(--mainColor);
+padding: 12px 20px;
+color:var(--white);
+}
+
+.btn-primary:hover{
+    background-color: var(--mainColorLight);
+}
+
+/* colors  */
+
+.color-main {
+    color: var(--mainColor);
+}
+.color-main:hover{
+    color: var(--mainColorLight);
+}
+
+.color-light {
+    color: var(--mainColorLight);
+}
+.color-light:hover{
+    color: var(--mainColor);
+}
+
+.color-text{
+    color: var(--textColor);
+}
+
+/* global classes end */
+
+/* responsive */
+@media only screen and (max-width :1200px) {
+.container-flow{
+    padding: 0 13px 0;
+}
+
+.hero{
+    padding: 50px 15px 0 !important;
+}
+.hero-image{
+    width: 50%;
+}
+}
+.view-event-img-wrap img{
+    height: 300px;
+    object-fit: contain;
+}
+
+</style>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="container" style="padding-top: 90px;" >
+        
+        <div class="row">
+         
+            <div class="col-12 col-lg-12">
+                <div class="view-event-wrap">
+                    <div class="view-event-img-wrap">
+                        <img src="/uploads/<%=event.imagePath%>" class="w-100" alt="image" srcset="">
+                    </div>
+                    <p class="fs-4 fw-bold"><%= event.title %></p>
+                    <div class="view-event-admin-wrap d-flex gap-5 color-gray-light">
+                        <p class="view-event-author"><span class="color-light"><i class="fa-solid fa-user"></i></span> NBD-Admin</p>
+                        <p class="view-event-date"> <span class="color-light"><i class="fa-regular fa-calendar"></i></span> <%= event.createdAt %></p>
+                    </div>
+                    <p><%=event.description %></p>
+                    <p class="fs-5 fw-bold">Venue:</p>
+                    <p class="view-event-time fw-bold  color-gray"> <span class="color-light"><i class="fa-regular fa-calendar"></i></span> <%=event.date %> 10:30Am</p>
+                    <p class="view-event-location fw-bold color-gray"> <span class="color-light"><i class="fa-solid fa-location-dot"></i></span> <%=event.title %></p>
+                    <p class="view-event-contact fw-bold color-gray"> <span class="color-light"><i class="fa-solid fa-phone"></i></span> <%= event.phone %></p>
+                </div>
+                
+            </div>
+</body>
+<!-- bs js  -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</html>

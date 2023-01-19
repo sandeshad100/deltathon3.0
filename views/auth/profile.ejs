@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+        <!-- fontawesome  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- bs css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <link rel="stylesheet" href="/style/global.css">
+            <link rel="stylesheet" href="/style/header.css">
+            <style>
+                /* .datashow-wrap .row{
+                    height: ;
+                } */
+                .css-display{
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                    gap: 20px;
+                    background-color: #E5E4E2;
+                }
+                .datashow-card{
+                    height: 110px;
+                    background-color: white;
+                }
+                .datashow-card p {
+                    margin-bottom: 0 !important;
+                }
+            </style>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <% if(user.role == 'admin'){ %>
+    <div class="container " style="padding-top: 100px; padding-bottom: 50px;">
+        <div class="blood-add-button-wrap w-100 d-flex justify-content-end position-fixed top-0 end-0 mt-4 mx-5" style="padding-top: 90px;">
+            <span style="margin-right: 20px;"><a href="/admin/dashboard" class="btn-primary rounded">Go To Admin DashBoard</a></span>
+            
+            <span><a href="/bookAppointment/new" class="btn-primary rounded"><i class="fa-solid fa-plus"></i> Add Appointment</a></span>
+        </div>
+        
+        <p class="h2 color-main fw-bold"><%=user.fullName %></p>
+        <% if(history.length<=5){ %>
+          <p class="h6 color-light fw-bold">Bronze</p>
+
+        <% }else{ %>
+          <p class="h5 color-light fw-bold">Silver</p>
+        <% } %>
+        <p class="h6 color-light"><%=user.localLevel %>,<%=user.district %>,<%=user.province %></p>
+        <div class="available-wrap d-flex gap-4">
+            <% if(user.availiabilityStatus == 'yes' || user.availiabilityStatus == 'available'){ %>
+                <div class="form-check">
+
+                    <label class="form-check-label" for="flexRadioDefault1">
+                    Available
+                    </label>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" disabled>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                    Not Available
+                    </label>
+                  </div>
+                 <% }else{ %>
+                    <div class="form-check">
+
+                        <label class="form-check-label" for="flexRadioDefault1">
+                        Available
+                        </label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" disabled>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <label class="form-check-label" for="flexRadioDefault2">
+                      Not Available
+                      </label>
+                    </div>
+                <% } %>
+        </div>
+        <div class="datashow-wrap">
+     <div class="css-display p-4 mt-4 mb-4">
+        <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+          <p class="h1 fw-bold color-main text-center"><%=history.length %></p>
+          <p class="color-light  text-center">NUMBER OF DONATION</p>
+        </div>
+        <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+            <p class="h1 fw-bold color-main text-center"><%= totalAmount %></p>
+            <p class="color-light  text-center">PINT DONATED</p>
+          </div>
+          <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+            <p class="h1 fw-bold color-main text-center"><%=history.length %></p>
+            <p class="color-light  text-center">LOYALTY POINTS</p>
+          </div>
+     </div>
+        </div>
+        <p class="color-main h6  mt-4 mb-3 fw-bold d-inline mx-2">Recent History</p>
+        <span><a href="/addToHistory" class="btn-primary sm rounded mt-5">Add new</a></span>
+        <% history.forEach((item)=>{ %>
+            <div class="bloodRequest-card mt-4 p-2 shadow">
+                <div class="bloodRequest-card-body mt-4 p-2 shadow">
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <th scope="row">Person Name:</th>
+                            <td><%=item.name %></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Date:</th>
+                            <td><%=item.date %></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Case:</th>
+                            <td><%=item.caseDetail %></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Amount:</th>
+                            <td><%=item.amount %></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+               
+            </div>
+      <% }) %>
+       
+    </div>
+    <% }else{%>
+        <div class="container " style="padding-top: 100px; padding-bottom: 50px;">
+            <div class="blood-add-button-wrap w-100 d-flex justify-content-end position-fixed top-0 end-0 mt-4 mx-5" style="padding-top: 90px;">
+                
+                <span><a href="/bookAppointment/new" class="btn-primary rounded"><i class="fa-solid fa-plus"></i> Add Appointment</a></span>
+            </div>
+            
+            <p class="h2 color-main fw-bold"><%=user.fullName %></p>
+            <% if(history.length<=5){ %>
+              <p class="h6 color-light fw-bold">Bronze</p>
+
+            <% }else{ %>
+              <p class="h5 color-light fw-bold">Silver</p>
+            <% } %>
+            <p class="h6 color-light"><%=user.localLevel %>,<%=user.district %>,<%=user.province %></p>
+            <div class="available-wrap d-flex gap-4">
+                <% if(user.availiabilityStatus == 'yes' || user.availiabilityStatus == 'available'){ %>
+                    <div class="form-check">
+    
+                        <label class="form-check-label" for="flexRadioDefault1">
+                        Available
+                        </label>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" disabled>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                        Not Available
+                        </label>
+                      </div>
+                     <% }else{ %>
+                        <div class="form-check">
+    
+                            <label class="form-check-label" for="flexRadioDefault1">
+                            Available
+                            </label>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" disabled>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                          <label class="form-check-label" for="flexRadioDefault2">
+                          Not Available
+                          </label>
+                        </div>
+                    <% } %>
+            </div>
+            <div class="datashow-wrap">
+         <div class="css-display p-4 mt-4 mb-4">
+            <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+              <p class="h1 fw-bold color-main text-center"><%=history.length %></p>
+              <p class="color-light  text-center">NUMBER OF DONATION</p>
+            </div>
+            <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+                <p class="h1 fw-bold color-main text-center"><%= totalAmount %></p>
+                <p class="color-light  text-center">PINT DONATED</p>
+              </div>
+              <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+                <p class="h1 fw-bold color-main text-center"><%=history.length %></p>
+                <p class="color-light  text-center">LOYALTY POINTS</p>
+              </div>
+         </div>
+            </div>
+            <p class="color-main h6  mt-4 mb-3 fw-bold d-inline mx-2">Recent History</p>
+            <span><a href="/addToHistory" class="btn-primary sm rounded mt-5">Add new</a></span>
+            <% history.forEach((item)=>{ %>
+                <div class="bloodRequest-card mt-4 p-2 shadow">
+                    <div class="bloodRequest-card-body mt-4 p-2 shadow">
+                        <table class="table">
+                            <tbody>
+                              <tr>
+                                <th scope="row">Person Name:</th>
+                                <td><%=item.name %></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Date:</th>
+                                <td><%=item.date %></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Case:</th>
+                                <td><%=item.caseDetail %></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Amount:</th>
+                                <td><%=item.amount %></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                   
+                </div>
+          <% }) %>
+           
+        </div>
+    <%} %>
+</body>
+<!-- bs cdn  -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+ <!-- jquery cdn  -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</html>

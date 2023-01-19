@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+     <!-- fontawesome  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="/style/login.css">
+     <link rel="stylesheet" href="/style/register/register.css">
+     <link rel="stylesheet" href="/style/global.css">
+     <style>
+        .form-field-wrap input {
+    padding: 9px 10px !important;
+    width: 100% !important;
+    background-color:
+    #ECECEC;
+}
+.form-field-wrap select {
+    padding: 9px 10px !important;
+    width: 100% !important;
+    background-color:
+    #ECECEC;
+}
+     </style>
+</head>
+<body>
+    <div class="login-wrap">
+        <h1 class="section-title">
+            Edit <span class="color-main ">Blood Bank</span>
+        </h1>
+        <div class="form-card">
+            <form action="/bloodBank/dashboard/bloodGroup/edit" method="post">
+                
+                
+                <div class="form-row">
+                   
+                    <div class="form-field-wrap" >
+                        <label for="bloodGroup">Select BloodGroup</label>
+                        <select name="bloodGroup" id="bloodGroup" required >
+                  <option value=""></option>
+
+                           <% bloodGroups.forEach((bloodGroup)=> { %>
+                            <option value="<%=bloodGroup.bloodGroup%>"><%=bloodGroup.bloodGroup%></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    
+                </div>
+                <div class="form-row">
+                    
+                    <div class="form-field-wrap"><input type="number" required placeholder="Amount" class="" name="amount"></div>
+                    
+                </div>
+                
+               
+               
+                
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <button type="submit" class="btn-primary">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  
+</html>

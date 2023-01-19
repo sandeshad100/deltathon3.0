@@ -1,0 +1,76 @@
+.contact-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.contact-left
+{
+width: 50%;
+}
+.contact-left-row{
+    display: flex;
+    gap: 15px;
+    align-items: start;
+}
+.social-media-wrap{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    font-size: 21px;
+}
+
+
+.contact-right{
+    width: 50%;
+
+}
+.contact .form-row{
+    margin: 0 0 10px 0;
+}
+textarea,input{
+    width: 100% !important;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+}
+textarea{
+    padding: 8px;
+}
+
+::placeholder{
+    color: var(--mainColor);
+}
+textarea:-moz-placeholder, /* Firefox 18- */
+textarea::-moz-placeholder, /* Firefox 19+ */
+textarea:-ms-input-placeholder, /* IE 10+ */
+textarea::-webkit-input-placeholder, /* Webkit based */
+textarea::placeholder { /* Modern browsers */
+  color:var(--mainColor);  
+}
+.contact a {
+    color: var(--mainColor);
+}
+
+/* responsive  */
+@media only screen and (max-width :1200px) {
+    .contact-right{
+        width: 100%;
+    }
+.contact-wrap{
+flex-direction: column;
+align-items: center;
+gap: 30px;
+}
+.title-2{
+    text-align: center;
+}
+.contact-left-row{
+    flex-direction: column;
+    /* align-items: center; */
+}
+.social-media-wrap{
+    gap: 30px;
+}
+
+}
+    

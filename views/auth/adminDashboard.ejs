@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- fontawesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bs css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet" href="/style/header.css">
+    <style>
+     
+        .css-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            background-color: #e5e4e2;
+
+        }
+
+        .datashow-card {
+            height: 110px;
+            background-color: white;
+
+
+        }
+
+        .datashow-card p {
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="container" style="padding-top: 100px;">
+     
+
+        <p class="h2 color-main fw-bold"><%=user.fullName %> -<span style="color: black;"> Admin</span></p>
+        <p class="h6 color-light"><%=user.localLevel %>,<%=user.district %>,<%=user.province %></p>
+        <p class="h6 color-light"><%= user.email %><p>
+      
+        <div class="blood-add-button-wrap d-flex justify-content-start gap-4 mt-4">
+
+            <span><a href="/admin/dashboard/createBloodBank" class="btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Add Blood Bank</a></span>
+            <span><a href="/admin/dashboard/createEvent" class="btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Add Event</a></span>
+            <span><a href="/admin/dashboard/createDoctor" class="btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Add Doctor</a></span>
+        </div>
+        <div class="datashow-wrap">
+            <div class="css-display p-4 mt-4 mb-4">
+                <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+                    <p class="h1 fw-bold color-main text-center"><%= users.length %></p>
+                    <p class="color-light  text-center">NUMBER OF USERS</p>
+                </div>
+                <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+                    <p class="h1 fw-bold color-main text-center"><%= events.length %></p>
+                    <p class="color-light  text-center">NUMBER OF BLOODBANKS</p>
+                </div>
+                <div class=" datashow-card d-flex flex-column justify-content-center align-items-center shadow">
+                    <p class="h1 fw-bold color-main text-center"><%= bloodBanks.length %></p>
+                    <p class="color-light  text-center">NUMBER OF EVENTS</p>
+                </div>
+            </div>
+        </div>
+        <p class="color-main h6  mt-4 mb-3 fw-bold d-inline mx-2">Recent contact Messages</p>
+        <% contactMessages.forEach((item)=>{ %>
+            <div class="bloodRequest-card mt-4 p-2 shadow">
+                <div class="bloodRequest-card-body mt-4 p-2 shadow">
+                    <table class="table">
+                        <tbody>
+                          <tr>
+                            <th scope="row">Person Name:</th>
+                            <td><%=item.fullName %></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Email:</th>
+                          <td><%=item.email %></td>
+                        </tr>
+                          <tr>
+                            <th scope="row">Submitted At:</th>
+                            <td><%=item.createdAt %></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Message:</th>
+                            <td><%=item.message %></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+               
+            </div>
+      <% }) %>
+    
+    </div>
+</body>
+<!-- bs cdn  -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<!-- jquery cdn  -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</html>

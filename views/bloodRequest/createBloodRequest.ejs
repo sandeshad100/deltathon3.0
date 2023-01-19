@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Request</title>
+    <link rel="stylesheet" href="/style/register/register.css">
+    <link rel="stylesheet" href="/style/header.css">
+    <link rel="stylesheet" href="/style/global.css">
+
+
+    <!-- bs  -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+<style>
+    textarea{
+        width: 90%;
+        padding: 5px 3px;
+    }
+</style>
+</head>
+<body>
+    <% if(!currentUser) { %>
+        <%- include('../error/loginError') %>
+        
+        <% }else{ %>
+            
+            <%- include('../partials/navbar') %>
+
+    <div class="form-card" style="padding-top: 100px;">
+        <h2 class="form-title text-center">Add <span class="color-main">Blood </span>Request</h2>
+        <p class="text-center">Save life of others by your blood.</p>
+        <div class="form-wrap">
+            <div class="form-left">
+                <img src="/bloodRequest.png" alt="" srcset="">
+            </div>
+            <form action="/bloodRequest" method="post" class="form-right">
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <label>Patient Name</label>
+                        <input name="patientName"  required type="text" placeholder="Patient Name">
+                    </div>
+                    <div class="form-field-wrap">
+                        <label>Contact Person</label>
+                        <input name="contactPerson" required type="text" placeholder="Contact Person">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <label for="bloodGroup">Select Blood Group</label>
+                       
+                        <select name="bloodGroup" id="bloodGroup" required>
+                            <option value=""></option>
+                            <option value="a+">A+</option>
+                            <option value="ab+">AB+</option>
+                            <option value="o+">O+</option>
+                            <option value="a-">A-</option>
+                            <option value="b+">B+</option>
+                            <option value="ab-">AB-</option>
+                            <option value="b-">B-</option>
+                            <option value="o-">O-</option>
+                            
+                        
+                        </select>
+                    </div>
+                    <div class="form-field-wrap">
+                        <label for="province">Select Provience</label>
+                        <select name="province" id="province" required onchange="updateDistricts()">
+                            <option value=""></option>
+                            <% provinces.forEach((province)=> { %>
+                                <option value="<%=province.name%>"><%=province.name%></option>
+                                <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <label for="district">Select District</label>
+                        <select name="district" id="district" required  onchange="updateLocalLevel()">
+                            <option value=""></option>
+                         
+                        </select>
+                    </div>
+                    <div class="form-field-wrap">
+                        <label for="localLevel">Local Level</label>
+                        <select name="localLevel" id="localLevel">
+                            <option value=""></option>
+                            
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <label for="hospital">Hospital</label>
+                        <input type="text" required name="hospital" id="hospital">
+                    </div>
+                    <div class="form-field-wrap">
+                        <label for="pint">Required Pint</label>
+                        <input type="text" placeholder="Required pint" name="requiredPint" id="pint" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <label for="phone">Phone</label>
+                        <input type="text" required name="phone" placeholder="Phone" id="phone">
+                    </div>
+                    <div class="form-field-wrap">
+                        <label for="date">Required Date</label>
+                        <input type="date" required name="requiredDate" placeholder="Required Date" id="date">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field-wrap">
+                        <label for="time">Required Time</label>
+                        <input type="time" required name="requiredTime" placeholder="Time" id="time">
+                    </div>
+                    <div class="form-field-wrap">
+                        <label for="time">Case Details</label>
+                        <textarea rows="3" required name="caseDetail" cols="10" placeholder="Case details.." id="time">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button type="submit" class="btn-submit">Proceed</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <% } %>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    function updateDistricts() {
+      let name = $('#province').val();
+      if(name){
+        $.get('/districtsByName', {name: name}, (data) => {
+          let options = '';
+          data.forEach((district) => {
+            options += `<option value="${district.name}">${district.name}</option>`;
+          });
+          $('#district').html(options);
+        });
+      }else{
+        $('#district').html('');
+      }
+    }
+    function updateLocalLevel() {
+    let name = $('#district').val();
+    if(name){
+      $.get('/localLevelByName', {name: name}, (data) => {
+        let options = '';
+        options += `<option value=""></option>`;
+        data.forEach((localLevel) => {
+
+          options += `<option value="${localLevel.name}">${localLevel.name}</option>`;
+        });
+        $('#localLevel').html(options);
+      });
+    }else{
+      $('#localLevel').html('');
+    }
+  }
+  </script>
+
+</html>

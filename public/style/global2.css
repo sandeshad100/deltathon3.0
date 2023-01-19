@@ -1,0 +1,138 @@
+@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700;800&amp;family=Roboto&amp;display=swap&#39;);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
+    
+}
+
+div,header,nav {
+    /* border: 1px solid blueviolet; */
+}
+
+:root {
+    --mainColor: #E03455;
+    --mainColorLight: #DE546F;
+    --textColor: #404040;
+    --white:white;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background-image: radial-gradient(#E03455 0.5px, #fefefe 0.5px);
+    background-color: #fefefe;
+    /* background-image: radial-gradient(#E03455 0.5px, #fefefe 0.5px); */
+}
+
+input,
+select {
+    color: var(--textColor);
+}
+img{
+    width: 100%;
+}
+/* button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+} */
+/* global classes start */
+.border{
+    border: 1px solid green ;
+}
+.hover-transition{
+    transition: 0.2s ease-in;
+}
+/* layout */
+.container-flow{
+    padding: 0 90px 0;
+}
+.section{
+    margin: 0 0 60px 0;
+}
+
+
+
+/* text  */
+.text-center {
+    text-align: center;
+}
+
+.section-title{
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+.font-w-600{
+    font-weight: 600;
+    }
+
+/* buttons  */
+/* .btn-radius{
+    border-radius: 6px;
+} */
+/* 
+.btn-primary{
+    width: 200px;
+background-color: var(--mainColor);
+padding: 12px 20px;
+color:var(--white);
+} */
+
+/* .btn-primary:hover{
+    background-color: var(--mainColorLight);
+} */
+
+/* colors  */
+
+.color-main {
+    color: var(--mainColor);
+}
+.color-main:hover{
+    color: var(--mainColorLight);
+}
+
+.color-light {
+    color: var(--mainColorLight);
+}
+.color-light:hover{
+    color: var(--mainColor);
+}
+
+.color-text{
+    color: var(--textColor);
+}
+
+/* global classes end */
+
+/* responsive */
+@media only screen and (max-width :1200px) {
+.container-flow{
+    padding: 0 13px 0;
+}
+
+.hero{
+    padding: 50px 15px 0 !important;
+}
+.hero-image{
+    width: 50%;
+}
+}

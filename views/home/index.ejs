@@ -1,0 +1,160 @@
+<% layout('layouts/boilerplate')%>
+
+
+    <div class="css-container">
+      
+        <div class="section hero container-flow ">
+            <div class="hero-left">
+                <h1 class="hero-title">
+                    Eliminate <span class="color-main">Blood</span> Scarcity in Nepal
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="color-main font-w-600">
+                        ''Blood for Nepal''</span> <span class="color-light"> an online platform that creates a bridge
+                        between a voluntary donar and a potential beneficiary.</span>
+                </p>
+                <div class="hero-call-to-action-wrap">
+                    <% if(!currentUser){ %>
+                    <span><a href="/register"><button
+                                class="btn-primary btn-radius btn-hero-register hover-transition">Register</button></a></span>
+                    <span><a href="registerForm.html"><button class="btn-hero-know-more">Know More</button></a></span>
+                    <% }else{ %>
+                    
+                    <span><a href="/donor"><button
+                        class="btn-primary btn-radius btn-hero-register hover-transition">Find Blood</button></a></span>
+                        <span><a href="registerForm.html"><button class="btn-hero-know-more">Know More</button></a></span>
+                        
+                        <% } %>
+                    </div>
+                <p class="text-donate-now">
+                    'Donate now & be the reason for someone heartbeat:)'
+                </p>
+            </div>
+            <div class="hero-right">
+                <img src="assets/images/hero-section-image.png" alt="" srcset="" class="hero-image">
+            </div>
+        </div>
+
+        <div class="section features container-flow">
+            <h1 class="section-title  fw-bolder">
+                Posts & <span class="color-main">Annoucements</span>
+            </h1>
+            <div class="container" >
+                <div class="row">
+                    <% events.forEach((event)=>{ %>
+
+                        <div class="col-lg-4 col-12 mb-4 d-flex justify-content-center">
+                            <div class="card text-start">
+                                <img src="uploads/<%=event.imagePath%>" class="card-img-top card-img" alt="...">
+                                <div class="card-body">
+                                    <span class="css-card-date fw-bold"><%=event.date%>- Admin</span>
+                                    <h5 class="card-title color-light fw-bold mt-0"><%=event.title%>-</h5>
+                                    <p class="card-text"><%=shortenText(event.description,30)%>
+                                    </p>
+                                    <a href="/events/<%=event.id%>" class="btn btn-primary-outline fw-bold text-start p-0">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                   <% }) %>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section container-flow contact ">
+            <h1 class="section-title fw-bolder">
+                Get in <span class="color-light">Touch</span>
+            </h1>
+            <div class="contact-wrap color-light">
+                <div class="contact-left">
+                    <div class="contact-left-row">
+                        <div class="contact-row-left">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="contact-row-right">
+                            <p class="contact-row-title fw-bold">Address</p>
+                            <p class="contact-row-subtitle">Dharan Annapurna Chowk, Nepal</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-left-row">
+                        <div class="contact-row-left">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="contact-row-right">
+                            <p class="contact-row-title fw-bold">Phone</p>
+                            <p class="contact-row-subtitle">9812345678</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-left-row">
+                        <div class="contact-row-left">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="contact-row-right">
+                            <p class="contact-row-title fw-bold">Email</p>
+                            <p class="contact-row-subtitle">bloodNepal@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-left-social-media color-main">
+                        <p class="fw-bold">Connect with us</p>
+                        <div class="social-media-wrap">
+                            <div class="contact-social-media-icon-wrap">
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                            <div class="contact-social-media-icon-wrap">
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                            <div class="contact-social-media-icon-wrap">
+                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                            </div>
+                            <div class="contact-social-media-icon-wrap">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-right">
+                    <h2 class="title-2">
+                        <span class="color-text text-align-center">Send us  your</span> message
+                    </h2>
+
+                    <form action="/contact" method="post">
+                        <div class="form-row">
+                            <div class="form-field-wrap">
+                            
+                                <input type="text" placeholder="Full name" name="fullName">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field-wrap">
+                                
+                                <input type="text" placeholder="Email" id="email" name="email">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-field-wrap">
+                              
+                                <textarea rows="3" cols="10" name="message" placeholder="Enter your message.." id="message">
+
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <span><a href="#"><button class="btn-primary btn-radius">Send</button></a></span>
+                        </div>
+                     
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

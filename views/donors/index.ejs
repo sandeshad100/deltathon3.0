@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Blood</title>
+        <!-- fontawesome  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- bs css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <link rel="stylesheet" href="/style/global.css">
+            <link rel="stylesheet" href="/style/header.css">
+            <style>
+                    .bloodBank-img-wrap{
+                    height: 70px;
+                    width: 70px;
+                    background-color: #0A5F98;
+                    color: white;
+                    text-align: center;
+                }
+                  .css-display{
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                    gap: 10px;
+                }
+                .bloodBank-info-wrap p {
+                    margin-bottom: 0 !important;
+                }
+                .modal-header{
+                    background-color: var(--mainColorLight);
+                    color: white;
+                }
+            </style>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="container p-5" style="padding-top:100px">
+        <h1 class="section-title fw-bold mt-4">Find <span class="color-light">Blood</span></h1>
+      
+        <form class="row g-3" action="/donor" method="get">
+            <div class="col-md-6">
+                <label for="bloodGroup" class="form-label">Blood Group</label>
+                <select id="bloodGroup" name="bloodGroup" class="form-select">
+                  <option value=""></option>
+                  <option value="a+">A+</option>
+                  <option value="ab+">AB+</option>
+                  <option value="o+">O+</option>
+                  <option value="a-">A-</option>
+                  <option value="b+">B+</option>
+                  <option value="ab-">AB-</option>
+                  <option value="b-">B-</option>
+                  <option value="o-">O-</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+              <label for="district" class="form-label">District</label>
+              <select id="district" name="district" class="form-select" onchange="updateLocalLevel()">
+                <option value=""></option>
+                <% districts.forEach((district) => { %>
+                  <option value="<%= district.name %>"><%= district.name %></option>
+              <% }) %>
+               
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="localLevel" class="form-label">Local Level</label>
+              <select id="localLevel" name="localLevel" class="form-select">
+                <option value=""></option>
+              
+
+
+                
+              </select>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary btn-sm border-0">Find</button>
+            </div>
+          </form>
+          <div class="bloodBank-lists mt-4">
+            <div class="css-display">
+                <% users.forEach(user => { %>
+                    <div class="modal fade" id="<%= user.fullName[0] %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header text-center">
+                              <h5 class="modal-title" id="exampleModalLabel"><%=user.fullName%></h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="d-block w-100"> <span class="fw-bold"> Address: </span><%=user.province%>,<%=user.district %>,<%=user.localLevel %></p>
+                                <p class="d-block w-100"> <span class="fw-bold"> Contact: </span><%=user.phone%></</p>
+                                <p class="d-block w-100"> <span class="fw-bold"> Email: </span><%=user.email%></</p>
+                                <p class="d-block w-100"> <span class="fw-bold"> BloodGroup: </span><%=user.bloodGroup%></</p>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center gap-3">
+                                <button type="button" class="btn"><span><i class="fa-solid fa-phone"></i></span> </button>
+                                <button type="button" class="btn"><span><i class="fa-solid fa-location-dot"></i></span></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                <div class="css-card d-flex gap-2 justify-content-center align-items-center shadow p-2  rounded" data-bs-toggle="modal" data-bs-target="#<%= user.fullName[0] %>" role="button">
+                  <div class="bloodBank-img-wrap d-flex justify-content-center align-items-center rounded-circle">
+                   <p class="h1 m-0 p-0"><%=user.bloodGroup %></p>
+                  </div>
+                  <div class="bloodBank-info-wrap d-flex flex-column pt-1">
+                    <p class="bloodBank-name fw-bold"><%=user.fullName %></p>
+                    <p class="blood-location"><%=user.district %>,<%=user.localLevel %></p>
+                    <p class="bloodBank-number text-success fw-bold"><%=user.availiabilityStatus %></p></p>
+                  </div>
+                </div>
+                <% }) %>
+              
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+   function updateLocalLevel() {
+    let name = $('#district').val();
+    if(name){
+      $.get('/localLevelByName', {name: name}, (data) => {
+        let options = '';
+        options += `<option value=""></option>`;
+        data.forEach((localLevel) => {
+
+          options += `<option value="${localLevel.name}">${localLevel.name}</option>`;
+        });
+        $('#localLevel').html(options);
+      });
+    }else{
+      $('#localLevel').html('');
+    }
+  }
+</script>
+</html>

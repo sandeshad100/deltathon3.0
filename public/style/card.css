@@ -1,0 +1,12 @@
+.card-img{
+    height: 180px;
+    object-fit: contain;
+}
+.css-card-date{
+    padding-bottom: 0rem !important;
+    font-size: 13px;
+
+}
+body{
+    /* background-color: aqua; */
+}
