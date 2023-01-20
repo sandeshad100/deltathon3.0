@@ -164,3 +164,26 @@ exports.messageToDoctor = async (req, res, next) => {
   sendMessage(req.body.message, req.body.phone);
   res.redirect("/call");
 };
+
+const { Configuration, OpenAIApi } = require("openai");
+require('dotenv').config()
+
+var responseTxt;
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+exports.doctorAi = async (req, res, next) => {
+  const completion = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt:req.body.question,
+    max_tokens: 1000
+   
+  });
+  res.json({response:completion.data.choices[0].text});
+  // console.log(completion.data.choices[0].text);
+  // responseTxt = completion.data.choices[0].text;
+
+}

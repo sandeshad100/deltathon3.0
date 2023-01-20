@@ -56,7 +56,7 @@ exports.createUser = async (req, res, next) => {
     password,
     passwordConfirm,
     agree,
-    parentNumber
+    parentNumber,
   } = req.body;
   const role = req.body.role || "donor";
   const availiabilityStatus = "available";
@@ -100,6 +100,7 @@ exports.createUser = async (req, res, next) => {
       code: 400,
     });
   }
+
   const user = await User.create({
     fullName,
     bloodGroup,
@@ -112,7 +113,7 @@ exports.createUser = async (req, res, next) => {
     password,
     role,
     availiabilityStatus,
-    parentNumber
+    parentNumber,
   });
 
   if (user) {

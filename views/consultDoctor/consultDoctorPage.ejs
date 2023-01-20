@@ -32,6 +32,347 @@
                     color: white;
                 }
 
+                .stretch-card>.card {
+            width: 100%;
+            min-width: 100%
+        }
+        body {
+            background-color: #F9F9FA
+        }
+        .flex {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto
+        }
+        @media (max-width:991.98px) {
+            .padding {
+                padding: 1.5rem
+            }
+        }
+        @media (max-width:767.98px) {
+            .padding {
+                padding: 1rem
+            }
+        }
+        .padding {
+            padding: 3rem
+        }
+        .box.box-warning {
+            border-top-color: #F39C12;
+        }
+        .box {
+            position: relative;
+            border-radius: 3px;
+            background: #FFFFFF;
+            border-top: 3px solid #D2D6DE;
+            margin-bottom: 20px;
+            width: 100%;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+        .box-header.with-border {
+            border-bottom: 1px solid #F4F4F4
+        }
+        .box-header.with-border {
+            border-bottom: 1px solid #F4F4F4;
+        }
+        .box-header {
+            color: #444;
+            display: block;
+            padding: 10px;
+            position: relative;
+        }
+        .box-header:before,
+        .box-body:before,
+        .box-footer:before,
+        .box-header:after,
+        .box-body:after,
+        .box-footer:after {
+            content: " ";
+            display: table;
+        }
+        .box-header {
+            color: #444;
+            display: block;
+            padding: 10px;
+            position: relative
+        }
+        .box-header>.fa,
+        .box-header>.glyphicon,
+        .box-header>.ion,
+        .box-header .box-title {
+            display: inline-block;
+            font-size: 18px;
+            margin: 0;
+            line-height: 1;
+        }
+        .box-header>.box-tools {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+        .box-header>.box-tools [data-toggle="tooltip"] {
+            position: relative;
+        }
+        .bg-yellow,
+        .callout.callout-warning,
+        .alert-warning,
+        .label-warning,
+        .modal-warning .modal-body {
+            background-color: #F39C12 !important;
+        }
+        .bg-yellow {
+            color: #fff !important;
+        }
+        .btn {
+            border-radius: 3px;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border: 1px solid transparent;
+        }
+        .btn-box-tool {
+            padding: 5px;
+            font-size: 12px;
+            background: transparent;
+            color: #97A0B3;
+        }
+        .direct-chat .box-body {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            position: relative;
+            overflow-x: hidden;
+            padding: 0;
+        }
+        .box-body {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px;
+            padding: 10px;
+        }
+        .box-header:before,
+        .box-body:before,
+        .box-footer:before,
+        .box-header:after,
+        .box-body:after,
+        .box-footer:after {
+            content: " ";
+            display: table;
+        }
+        .direct-chat-messages {
+            -webkit-transform: translate(0, 0);
+            -ms-transform: translate(0, 0);
+            -o-transform: translate(0, 0);
+            transform: translate(0, 0);
+            padding: 10px;
+            height: 250px;
+            overflow: auto;
+        }
+        .direct-chat-messages,
+        .direct-chat-contacts {
+            -webkit-transition: -webkit-transform .5s ease-in-out;
+            -moz-transition: -moz-transform .5s ease-in-out;
+            -o-transition: -o-transform .5s ease-in-out;
+            transition: transform .5s ease-in-out;
+        }
+        .direct-chat-msg {
+            margin-bottom: 10px;
+        }
+        .direct-chat-msg,
+        .direct-chat-text {
+            display: block;
+        }
+        .direct-chat-info {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 12px;
+        }
+        .direct-chat-timestamp {
+            color: #999;
+        }
+        .btn-group-vertical>.btn-group:after,
+        .btn-group-vertical>.btn-group:before,
+        .btn-toolbar:after,
+        .btn-toolbar:before,
+        .clearfix:after,
+        .clearfix:before,
+        .container-fluid:after,
+        .container-fluid:before,
+        .container:after,
+        .container:before,
+        .dl-horizontal dd:after,
+        .dl-horizontal dd:before,
+        .form-horizontal .form-group:after,
+        .form-horizontal .form-group:before,
+        .modal-footer:after,
+        .modal-footer:before,
+        .modal-header:after,
+        .modal-header:before,
+        .nav:after,
+        .nav:before,
+        .navbar-collapse:after,
+        .navbar-collapse:before,
+        .navbar-header:after,
+        .navbar-header:before,
+        .navbar:after,
+        .navbar:before,
+        .pager:after,
+        .pager:before,
+        .panel-body:after,
+        .panel-body:before,
+        .row:after,
+        .row:before {
+            display: table;
+            content: " ";
+        }
+        .direct-chat-img {
+            border-radius: 50%;
+            float: left;
+            width: 40px;
+            height: 40px;
+        }
+        .direct-chat-text {
+            border-radius: 5px;
+            position: relative;
+            padding: 5px 10px;
+            background: #D2D6DE;
+            border: 1px solid #D2D6DE;
+            margin: 5px 0 0 50px;
+            color: #444;
+        }
+        .direct-chat-msg,
+        .direct-chat-text {
+            display: block;
+        }
+        .direct-chat-text:before {
+            border-width: 6px;
+            margin-top: -6px;
+        }
+        .direct-chat-text:after,
+        .direct-chat-text:before {
+            position: absolute;
+            right: 100%;
+            top: 15px;
+            border: solid transparent;
+            border-right-color: #D2D6DE;
+            content: ' ';
+            height: 0;
+            width: 0;
+            pointer-events: none;
+        }
+        .direct-chat-text:after {
+            border-width: 5px;
+            margin-top: -5px;
+        }
+        .direct-chat-text:after,
+        .direct-chat-text:before {
+            position: absolute;
+            right: 100%;
+            top: 15px;
+            border: solid transparent;
+            border-right-color: #D2D6DE;
+            content: ' ';
+            height: 0;
+            width: 0;
+            pointer-events: none;
+        }
+        :after,
+        :before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .direct-chat-msg:after {
+            clear: both;
+        }
+        .direct-chat-msg:after {
+            content: " ";
+            display: table;
+        }
+        .direct-chat-info {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 12px;
+        }
+        .right .direct-chat-img {
+            float: right;
+        }
+        .direct-chat-warning .right>.direct-chat-text {
+            background: #F39C12;
+            border-color: #F39C12;
+            color: #fff;
+        }
+        .right .direct-chat-text {
+            margin-right: 50px;
+            margin-left: 0;
+        }
+        .box-footer {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px;
+            border-top: 1px solid #F4F4F4;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .box-header:before,
+        .box-body:before,
+        .box-footer:before,
+        .box-header:after,
+        .box-body:after,
+        .box-footer:after {
+            content: " ";
+            display: table;
+        }
+        .input-group-btn {
+            position: relative;
+            font-size: 0;
+            white-space: nowrap;
+        }
+        .input-group-btn:last-child>.btn,
+        .input-group-btn:last-child>.btn-group {
+            z-index: 2;
+            margin-left: -1px;
+        }
+        .btn-warning {
+            color: #fff;
+            background-color: #F0AD4E;
+            border-color: #EEA236;
+        }
+        /* custom  */
+        #hide-chat{
+          width: 445px;
+          position: relative;
+        }
+        .css-chat{
+          box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+          position: fixed;
+          bottom: 15px;
+          right: 15px;
+        }
+                /* chat design css end  */
+                /* chat open start  */
+.chat-open-wrap{
+  position: fixed;
+  bottom: 70px;
+  right: 55px;
+}
+.chat-open{
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--mainColorLight);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:var(--mainColorLight);
+  font-size: 24px;
+  cursor: pointer;
+  transition:0.2s ease-in;
+}
+.chat-open:hover{
+ color: var(--textColor);
+}
+                /* chat open end  */
             </style>
 
 </head>
@@ -144,7 +485,7 @@
                           <img class="direct-chat-img"
                               src="https://static.vecteezy.com/system/resources/thumbnails/007/225/199/small/robot-chat-bot-concept-illustration-vector.jpg"
                               alt="message user image">
-                          <div class="direct-chat-text">
+                          <div class="direct-chat-text" id="direct-chat-text">
                               Hello, How can I help you?
                           </div>
                       </div>
@@ -155,16 +496,17 @@
                           <img class="direct-chat-img"
                               src="https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg"
                               alt="message user image">
-                          <div class="direct-chat-text">
+                          <div class="direct-chat-text" id="userInputData">
                               I would love to.
                           </div>
+                        
                       </div>
                   </div>
               </div>
               <div class="box-footer">
                   <form action="#" method="post">
                       <div class="input-group">
-                          <input type="text" name="message" placeholder="Type Message ..."
+                          <input type="text" name="question" placeholder="Type Message ..."
                               class="form-control" id="inputPrompt">
                           <span class="input-group-btn">
                               <button type="button" class="btn btn-warning btn-flat"
@@ -183,6 +525,7 @@
       <i class="fa-solid fa-robot"></i>
     </div>
   </div>
+
 <!-- chat default icon END  -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -267,5 +610,99 @@ crossorigin="anonymous"></script>
     }
   })
 }
+</script>
+<script>
+  $(document).ready(function() {
+    $('#hide-chat').removeClass('d-flex');
+    $('#hide-chat').hide();
+
+    $(".chat-open-wrap").click(function() {
+      $('.chat-open-wrap').hide();
+      $('#hide-chat').addClass('d-flex');
+      $('#hide-chat').show();
+});
+
+// close chat window 
+
+$("#btn-chat-collapse").click(function() {
+  $('#hide-chat').removeClass('d-flex');
+    $('#hide-chat').hide();
+    $('.chat-open-wrap').show();
+});
+  });
+
+
+</script>
+<script>
+  $(document).ready(function () {
+      var chatList = document.querySelector(".direct-chat-messages");
+      var botReturn = "Well done njnjdnjfndjfnjdfndjfndjfn";
+      //generate template to add new user input data
+      const generateTemplate = (val) => {
+
+          chatList.innerHTML += `<div class="direct-chat-msg right" id="new-ele" >
+                        <div class="direct-chat-info clearfix">
+                          <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                      
+                        </div>
+                       
+                       
+            
+                        <div class="direct-chat-text">
+                          ${val}
+                        </div>
+                      
+                      </div>`;
+
+      };
+      const generateTemplateBot = () => {
+          chatList.innerHTML += `   <div class="direct-chat-msg">
+                                  <div class="direct-chat-info clearfix">
+                                      <span class="direct-chat-name pull-left">Doctor AI</span>
+                                     
+                                  </div>
+
+                             
+
+                                  <div class="direct-chat-text" id="direct-chat-text">
+                                      
+                                  </div>
+
+                              </div>`;
+      };
+      $("#btn-send").click(function () {
+          var myValue = $("#inputPrompt").val();
+          fetch("/consultDoctor/doctorAi", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  question: myValue,
+              }),
+          })
+              .then((response) => response.json())
+              .then((data) => {
+                  console.log(data);
+                  document.querySelector('#direct-chat-text').innerHTML = data.response;
+                  // alert(data.response);
+              })
+              .catch((error) => {
+                  console.log(error);
+              });
+          if (myValue.length) {//only add if length is atleast 1
+            document.getElementById('userInputData').innerHTML = myValue;
+              // generateTemplate(myValue);
+              // setTimeout(generateTemplateBot,3000);
+        
+
+          }
+
+      });
+
+
+
+
+  });
 </script>
 </html>

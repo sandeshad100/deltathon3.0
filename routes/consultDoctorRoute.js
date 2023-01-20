@@ -4,6 +4,7 @@ const {
   createDoctor,
   getDoctors,
   messageToDoctor,
+  doctorAi,
 } = require("../controllers/consultDoctor/consultDoctor");
 const catchAsync = require("../utils/catchAsync");
 const { protectMiddleware } = require("../utils/isAuthenticated");
@@ -16,5 +17,6 @@ router
   .get(protectMiddleware, getDoctors)
   .post(protectMiddleware, restrictTo("admin"), createDoctor);
 router.route("/sendMessage").post(catchAsync(messageToDoctor));
+router.route("/doctorAi").post(doctorAi);
 
 module.exports = router;

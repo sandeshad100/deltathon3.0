@@ -64,8 +64,8 @@ module.exports = (sequelize, DataTypes, bcrypt, crypto) => {
       type: DataTypes.STRING,
       defaultValue: "available",
     },
-    parentNumber : {
-      type: DataTypes.INTEGER,
+    parentNumber: {
+      type: DataTypes.STRING,
       allowNull: true,
     },
     passwordResetToken: DataTypes.STRING,

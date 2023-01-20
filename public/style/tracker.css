@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 50rem;
+    width: 100%;
+}
+
+#directions {
+    position: absolute;
+    width: 30%;
+    max-height: 50%;
+    right: 20px;
+    top: 20px;
+    overflow-y: auto; /* Show a scrollbar if needed */
+    background: rgb(194, 29, 29);
+    font-family: Arial, Helvetica, Verdana;
+    line-height: 1.5;
+    font-size: 14px;
+    padding: 10px;
+  }

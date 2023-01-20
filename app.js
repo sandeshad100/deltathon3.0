@@ -19,6 +19,8 @@ const contactRoute = require("./routes/contactRoute");
 const homeRoute = require("./routes/homeRoute");
 const selectRoute = require("./routes/selectRoute");
 const consultDoctorRoute = require("./routes/consultDoctorRoute");
+const locationRoute = require("./routes/locationRoute");
+const predictRoute = require("./routes/predictRoute");
 
 var axios = require("axios").default;
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -35,7 +37,8 @@ const {
 } = require("./controllers/bloodBank/bloodBankController");
 const { sequelize } = require("./model");
 const {
-  renderCreateDoctor, messageToDoctor,
+  renderCreateDoctor,
+  messageToDoctor,
 } = require("./controllers/consultDoctor/consultDoctor");
 const { sendMessage } = require("./utils/sendMessage");
 
@@ -75,16 +78,15 @@ app.use((req, res, next) => {
   res.locals.user = req.user;
   res.locals.sendMessage = async (message, phone) => {
     try {
-       await twilio.messages.create({
+      await twilio.messages.create({
         body: message,
         from: process.env.FROM_NUMBER,
         to: phone,
       });
-      console.log('send')
+      console.log("send");
     } catch (error) {
       console.log(error);
     }
-    
   };
   res.locals.shortenText = function (text, length) {
     return text.substring(0, length);
@@ -98,6 +100,9 @@ app.get("/call/:id", (req, res) => {
   res.render("call/renderCallPage", { id });
 });
 
+app.get("/map", (req, res) => {
+  res.render("map/index");
+});
 // app.get("/", renderCreateEventPage);
 app.get(
   "/admin/dashboard/createEvent",
@@ -128,6 +133,7 @@ app.get("/districts", async (req, res) => {
   );
   res.json(districts);
 });
+
 app.get("/districtsByName", async (req, res) => {
   const districtsByName = await sequelize.query(
     "SELECT districts.name FROM districts LEFT JOIN provinces p ON p.id = districts.province_id WHERE p.name=? ",
@@ -249,7 +255,8 @@ app.use("/", authRoute);
 app.use("/select", selectRoute);
 app.use("/blood", homeRoute);
 app.use("/consultDoctor", consultDoctorRoute);
-
+app.use("/location", locationRoute);
+app.use("/predict", predictRoute);
 app.use("/events", eventRoute);
 app.use("/bloodBank", bloodBankRoute);
 app.use("/donor", donorRoute);

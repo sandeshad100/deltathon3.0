@@ -18,8 +18,13 @@ header a {
     color: var(--white);
 }
 .logo-wrap{
-    width: 52px;
-    overflow: hidden;
+    /* width: 70px; */
+    /* overflow: hidden; */
+    color: white;
+    font-weight: 600;
+    font-size: 60px !important;
+    /* border: 1px solid red; */
+    height: 40px;
 }
 
 nav{
